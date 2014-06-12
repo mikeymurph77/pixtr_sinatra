@@ -36,3 +36,15 @@ post "/galleries" do
 
   redirect "/galleries/#{gallery.id}"
 end
+
+get "/galleries/:id/edit" do
+  @gallery = Gallery.find(params[:id])
+  erb :edit_gallery
+end
+
+patch "/galleries/:id" do
+  gallery = Gallery.find(params[:id])
+  gallery.update(params[:gallery])
+
+  redirect "/galleries/#{gallery.id}"
+end
